@@ -32,3 +32,10 @@ comparator cannot order (e.g., mixing types), the list may become unsorted
 and searches will fail. Always use a comparator consistent with your value
 type. Duplicate values are allowed and are kept in insertion order among
 equals.
+
+## Performance
+
+The window keeps a bounded buffer, so `push` is constant time and memory does not
+grow with the length of the stream. `peak` and `trough` are linear in the window
+size, which is the trade that keeps `push` cheap.
+
